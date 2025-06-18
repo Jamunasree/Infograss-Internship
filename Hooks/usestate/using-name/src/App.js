@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
-function App() {
+function NameForm() {
+  const [name, setName] = useState(''); 
+
+  const handleChange = (e) => {
+    setName(e.target.value); 
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); 
+    alert(`Hello, ${name}!`);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <form onSubmit={handleSubmit} style={{ textAlign: 'center', marginTop: '50px' }}>
+      <h2>Enter your name:</h2>
+      <input type="text" value={name} onChange={handleChange} />
+      <br /><br />
+      <button type="submit">Submit</button>
+    </form>
   );
 }
 
-export default App;
+export default NameForm;
